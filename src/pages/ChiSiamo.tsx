@@ -1,0 +1,121 @@
+import { PageHeader } from "@/components/PageHeader";
+import { Reveal } from "@/components/Reveal";
+import roberto from "@/assets/roberto.jpg";
+import rosa from "@/assets/Rosa.jpg";
+
+const timeline = [
+  ["1978", "Roberto Carretti inizia la pratica del Tai Chi Chuan stile Wu."],
+  ["Anni '90", "Approfondisce lo studio in Italia ed Europa con maestri di lignaggio."],
+  ["2011", "La scuola entra a far parte della Wu Taiji Jing Xiu Tang del M° Zhou Zhongfu."],
+  ["2022", "La sede si trasferisce in Via Caffaro 30, nel cuore di Genova."],
+  ["Oggi", "Unica rappresentante in Italia del lignaggio Jing Xiu Tang."],
+];
+
+const ChiSiamo = () => (
+  <>
+    <PageHeader
+      eyebrow="La scuola"
+      title="Una tradizione viva, custodita con cura."
+      intro="L'ASD Tai Chi Wu Italia è una scuola dedicata alla diffusione autentica del Tai Chi Chuan stile Wu in Italia. Una pratica trasmessa di persona, passo dopo passo."
+      cn="師"
+    />
+
+    <section className="container-wide pb-24">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        <Reveal>
+          <div className="flex items-center gap-5 mb-6">
+            <img 
+              src={roberto} 
+              alt="Maestro Roberto Carretti" 
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500 shrink-0 shadow-sm" 
+            />
+            <h2 className="font-display text-3xl mb-0">Il Maestro Roberto Carretti</h2>
+          </div>
+          <p className="text-lg leading-relaxed text-foreground/85 mb-6">
+          Il M° Roberto Carretti inizia il suo percorso nelle arti marziali nel 1969, esplorando discipline come Jujitsu, Taekwondo e Kendo. Nel <strong>1978</strong> incontra il Tai Chi Chuan stile Wu, a cui sceglie di dedicarsi esclusivamente dal 1988. Nel 2011, il Maestro caposcuola Zhou Zhongfu gli affida l'esclusiva per l'apertura in Italia della <em>Wu Taiji Jing Xiu Tang</em>.
+          </p>
+          <p className="text-lg leading-relaxed text-foreground/85 mb-6">
+          La sua ricerca unisce intimamente la disciplina marziale alla cura della salute: laureato magistrale in Scienze Motorie e Operatore Shiatsu, ha sviluppato importanti progetti pionieristici che integrano il Tai Chi in ambito riabilitativo e psichiatrico. È inoltre autore di testi di riferimento e docente in ambito universitario.
+          </p>
+          <p className="text-lg leading-relaxed text-foreground/85">
+          Nel 2016 ha ricoperto l'incarico di Direttore Tecnico Nazionale FIWUK per lo Stile Wu e ha conquistato due medaglie d'oro ai Campionati Mondiali IWUF a Varsavia (mani nude e spada). Oggi, con pazienza e rigore, continua a trasmettere la sua esperienza accompagnando allievi di ogni livello.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.15}>
+          <div className="flex items-center gap-5 mb-6">
+            <img 
+              src={rosa} 
+              alt="Insegnante Rosa Manghina" 
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500 shrink-0 shadow-sm" 
+            />
+            <h2 className="font-display text-3xl mb-0">L'Insegnante Rosa Manghina</h2>
+          </div>
+          <p className="text-lg leading-relaxed text-foreground/85 mb-6">
+            Allieva diretta del Maestro Carretti fin dal <strong>1984</strong>, Rosa Manghina ha dedicato la sua vita allo studio e alla pratica delle arti marziali interne. Ha consolidato la sua formazione recandosi a Shanghai presso la <em>Wu Taiji Jing Xiu Tang</em> del M° Zhou Zhongfu, dove ha conseguito il titolo ufficiale di Insegnante e l'abilitazione come Maestra di Ventaglio.
+          </p>
+          <p className="text-lg leading-relaxed text-foreground/85 mb-6">
+            Negli anni, la sua dedizione si è spinta oltre i confini della scuola: ha arricchito la propria pratica confrontandosi con maestri internazionali e ha messo alla prova la sua abilità in competizioni di altissimo livello, conquistando prestigiosi titoli mondiali che testimoniano l'eleganza e la profonda comprensione del suo movimento.
+          </p>
+          <p className="text-lg leading-relaxed text-foreground/85">
+            Oltre ad affiancare la conduzione dei corsi di Tai Chi e Qi Gong, Rosa è Counselor Professionista. All'interno dell'Associazione, integra la disciplina marziale con l'ascolto e la cura della persona, guidando laboratori di consapevolezza corporea che rendono la pratica un autentico strumento di benessere.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+
+    <section className="bg-secondary/40 py-20">
+      <div className="container-prose">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.4em] text-accent mb-4">Il lignaggio</p>
+          <h2 className="font-display text-3xl md:text-4xl mb-6 leading-tight">
+            Wu Taiji Jing Xiu Tang · 吳氏太極精修堂
+          </h2>
+          <p className="text-lg leading-relaxed text-foreground/85 mb-4">
+            Dal <strong>2011</strong> la scuola entra a far parte della{" "}
+            <a href="https://jingxiutang.eu/" target="_blank" rel="noopener noreferrer" className="link-ink text-foreground">
+              Wu Taiji Jing Xiu Tang
+            </a>{" "}
+            del Maestro caposcuola{" "}
+            <a href="https://jingxiutang.eu/master-zhou-zhongfu" target="_blank" rel="noopener noreferrer" className="link-ink text-foreground">
+              Zhou Zhongfu
+            </a>{" "}
+            di Shanghai, come <strong>unica rappresentante in Italia</strong>.
+          </p>
+          <p className="text-lg leading-relaxed text-foreground/85">
+            Un'affiliazione che garantisce continuità con la trasmissione tradizionale e
+            costante aggiornamento attraverso seminari, viaggi di studio e incontri internazionali.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+
+    <section className="container-wide py-24">
+      <Reveal>
+        <p className="text-xs uppercase tracking-[0.4em] text-accent mb-4">Tappe</p>
+        <h2 className="font-display text-4xl md:text-5xl mb-16 max-w-xl">
+          Quasi cinquant'anni di cammino.
+        </h2>
+      </Reveal>
+
+      <ol className="relative max-w-3xl mx-auto">
+        <div className="absolute left-[5.5rem] md:left-32 top-2 bottom-2 w-px bg-border" />
+        {timeline.map(([year, text], i) => (
+          <Reveal key={year} delay={i * 0.08}>
+            <li className="grid grid-cols-[6rem_1fr] md:grid-cols-[8rem_1fr] gap-6 md:gap-12 pb-12 last:pb-0 relative">
+              <p className="font-cn text-accent text-sm tracking-widest md:text-right pt-1 relative">
+                <span className="font-display font-medium text-2xl text-foreground not-italic block">{year}</span>
+              </p>
+              <div className="relative">
+                <span className="absolute -left-[2.05rem] md:-left-[2.55rem] top-3 h-2 w-2 rounded-full bg-accent ring-4 ring-background" />
+                <p className="text-lg leading-relaxed text-foreground/85">{text}</p>
+              </div>
+            </li>
+          </Reveal>
+        ))}
+      </ol>
+    </section>
+  </>
+);
+
+export default ChiSiamo;
