@@ -5,12 +5,12 @@ import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/tai-chi", label: "Tai Chi Chuan" },
-  { to: "/qi-gong", label: "Qi Gong" },
-  { to: "/dove-e-quando", label: "Dove e quando" },
-  { to: "/chi-siamo", label: "Chi siamo" },
-  { to: "/contatti", label: "Contatti" },
+  { to: "/",        label: "Home",          end: true  },
+  { to: "/tai-chi", label: "Tai Chi Chuan", end: false },
+  { to: "/qi-gong", label: "Qi Gong",       end: false },
+  { to: "/dove-e-quando", label: "Dove e quando", end: true },
+  { to: "/chi-siamo",     label: "Chi siamo",     end: false },
+  { to: "/contatti",      label: "Contatti",      end: true  },
 ];
 
 export const Navbar = () => {
@@ -45,7 +45,7 @@ export const Navbar = () => {
             <NavLink
               key={l.to}
               to={l.to}
-              end={l.to === "/"}
+              end={l.end}
               className={({ isActive }) =>
                 cn(
                   "text-sm tracking-wide transition-colors link-ink",

@@ -6,6 +6,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Layout } from "./components/Layout";
 import Index from "./pages/Index";
 import TaiChi from "./pages/TaiChi";
+import StileWu from "@/pages/StileWu";
+import TaiChiSalute from "@/pages/TaiChiSalute";
+import FormaOtto from "@/pages/FormaOtto";
+import FormaBreve from "@/pages/FormaBreve";
+import FormaLunga from "@/pages/FormaLunga";
+import FormaRapida from "@/pages/FormaRapida";
 import QiGong from "./pages/QiGong";
 import DoveQuando from "./pages/DoveQuando";
 import ChiSiamo from "./pages/ChiSiamo";
@@ -24,6 +30,12 @@ const App = () => (
         <Route element={<Layout />}>
           <Route path="/" element={<Index />} />
           <Route path="/tai-chi" element={<TaiChi />} />
+          <Route path="/tai-chi/stile-wu" element={<StileWu />} />
+          <Route path="/tai-chi/tai-chi-e-salute" element={<TaiChiSalute />} />
+          <Route path="/tai-chi/le-forme/forma-otto" element={<FormaOtto />} />
+          <Route path="/tai-chi/le-forme/forma-breve" element={<FormaBreve />} />
+          <Route path="/tai-chi/le-forme/forma-lunga" element={<FormaLunga />} />
+          <Route path="/tai-chi/le-forme/forma-rapida" element={<FormaRapida />} />
           <Route path="/qi-gong" element={<QiGong />} />
           <Route path="/dove-e-quando" element={<DoveQuando />} />
           <Route path="/chi-siamo" element={<ChiSiamo />} />

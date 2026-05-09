@@ -72,7 +72,7 @@ if (!isProduction) {
 // Intercetta tutte le rotte frontend e renderizza React lato server
 app.use('*', async (req, res) => {
   try {
-    const url = req.originalUrl.replace(base, '');
+    const url = req.originalUrl;
     let template, render;
 
     if (!isProduction) {
