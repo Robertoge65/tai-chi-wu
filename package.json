@@ -10,7 +10,8 @@
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "lint": "eslint .",
     "start": "node server.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "hostinger:zip": "npx bestzip deploy.zip components.json index.html package-lock.json package.json postcss.config.js public server.js src startup.cjs tailwind.config.ts vite.config.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

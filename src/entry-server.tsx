@@ -2,6 +2,8 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
 import App from './App' // Assicurati che punti al file con le tue rotte
+import { buildMetaTags, META, DEFAULT_META } from './lib/meta'
+import { buildSchemaScripts } from './lib/schema'
 
 export function render(url: string) {
   return renderToString(
@@ -12,3 +14,5 @@ export function render(url: string) {
     </React.StrictMode>
   )
 }
+
+export { buildMetaTags, META, DEFAULT_META, buildSchemaScripts }

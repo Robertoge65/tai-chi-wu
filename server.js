@@ -4,48 +4,48 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import nodemailer from 'nodemailer';
 
+// ─── Import meta e schema (ESM) ───────────────────────────────────────────────
+// NOTA: questi file .ts vengono importati tramite Vite in sviluppo
+// e come .js compilati in produzione (dist/server/).
+// In sviluppo usiamo vite.ssrLoadModule; in produzione l'import diretto funziona
+// perché il build genera i file JS corrispondenti.
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Di default consideriamo l'ambiente in produzione se non è esplicitamente "development"
 const isProduction = process.env.NODE_ENV !== 'development';
 const app = express();
 const PORT = process.env.PORT || 3000;
 const base = process.env.BASE || '/';
 
-// Permette di parsare il body delle chiamate POST in formato JSON
 app.use(express.json());
 
-// L'endpoint API che viene chiamato da ListaAttesa.tsx
+// ─── Endpoint lista d'attesa ──────────────────────────────────────────────────
 app.post('/api/lista-attesa', async (req, res) => {
   const { nome, cognome, email, telefono, dataNascita, messaggio } = req.body;
-  
+
   try {
-    // Configura il trasportatore SMTP (i dati andranno configurati nel pannello Hostinger)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtps.aruba.it',
       port: process.env.SMTP_PORT || 465,
-      secure: true, // true per la porta 465, false per la 587
+      secure: true,
       auth: {
         user: process.env.SMTP_USER || 'taichi@taichiwu.it',
         pass: process.env.SMTP_PASS || 'TuaPasswordHostinger123!',
       },
     });
 
-    // Imposta il contenuto dell'email
     const mailOptions = {
-      from: `"Sito Tai Chi Wu" <${process.env.SMTP_USER || 'taichi@taichiwu.it'}>`, // L'email mittente deve coincidere con l'utente SMTP
-      to: process.env.SMTP_USER || 'taichi@taichiwu.it', // L'email a cui vuoi ricevere le iscrizioni
-      replyTo: email, // Ti permette di cliccare "Rispondi" e scrivere direttamente all'utente
+      from: `"Sito Tai Chi Wu" <${process.env.SMTP_USER || 'taichi@taichiwu.it'}>`,
+      to: process.env.SMTP_USER || 'taichi@taichiwu.it',
+      replyTo: email,
       subject: `Nuova iscrizione in lista d'attesa: ${nome} ${cognome}`,
       text: `Hai ricevuto una nuova richiesta per la lista d'attesa.\n\nNome: ${nome}\nCognome: ${cognome}\nEmail: ${email}\nTelefono: ${telefono}\nData di nascita: ${dataNascita}\n\nMessaggio:\n${messaggio}`,
       html: `<p>Hai ricevuto una nuova richiesta per la lista d'attesa.</p><ul><li><strong>Nome:</strong> ${nome}</li><li><strong>Cognome:</strong> ${cognome}</li><li><strong>Email:</strong> ${email}</li><li><strong>Telefono:</strong> ${telefono}</li><li><strong>Data di nascita:</strong> ${dataNascita}</li></ul><p><strong>Messaggio:</strong><br/>${messaggio}</p>`
     };
 
-    // Invia l'email
     await transporter.sendMail(mailOptions);
     console.log("Iscrizione inviata con successo per:", email);
-
     res.status(200).json({ success: true });
   } catch (error) {
     console.error("Errore durante l'invio dell'email:", error);
@@ -53,10 +53,9 @@ app.post('/api/lista-attesa', async (req, res) => {
   }
 });
 
-// --- CONFIGURAZIONE SSR ---
+// ─── Configurazione SSR ───────────────────────────────────────────────────────
 let vite;
 if (!isProduction) {
-  // Sviluppo: usiamo Vite come middleware per compilare e servire al volo
   const { createServer } = await import('vite');
   vite = await createServer({
     server: { middlewareMode: true },
@@ -65,31 +64,59 @@ if (!isProduction) {
   });
   app.use(vite.middlewares);
 } else {
-  // Produzione: serviamo i file statici buildati nella cartella "client" ignorando l'index
   app.use(base, express.static(path.resolve(__dirname, 'dist/client'), { index: false }));
 }
 
-// Intercetta tutte le rotte frontend e renderizza React lato server
+// ─── Helper: estrae il path pulito dall'URL (senza query string) ──────────────
+function getCleanPath(url) {
+  return url.split('?')[0].split('#')[0] || '/';
+}
+
+// ─── Route principale SSR ─────────────────────────────────────────────────────
 app.use('*', async (req, res) => {
   try {
     const url = req.originalUrl;
-    let template, render;
+    const cleanPath = getCleanPath(url);
+
+    let template, render, buildMetaTags, META, DEFAULT_META, buildSchemaScripts;
 
     if (!isProduction) {
+      // Sviluppo: Vite compila al volo i file .ts
       template = await fs.readFile(path.resolve(__dirname, 'index.html'), 'utf-8');
       template = await vite.transformIndexHtml(url, template);
-      render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
+      const entryModule = await vite.ssrLoadModule('/src/entry-server.tsx');
+      render = entryModule.render;
+      buildMetaTags = entryModule.buildMetaTags;
+      META = entryModule.META;
+      DEFAULT_META = entryModule.DEFAULT_META;
+      buildSchemaScripts = entryModule.buildSchemaScripts;
     } else {
+      // Produzione: usa i file compilati
       template = await fs.readFile(path.resolve(__dirname, 'dist/client/index.html'), 'utf-8');
-      render = (await import('./dist/server/entry-server.js')).render;
+      const entryModule = await import('./dist/server/entry-server.js');
+      render = entryModule.render;
+      buildMetaTags = entryModule.buildMetaTags;
+      META = entryModule.META;
+      DEFAULT_META = entryModule.DEFAULT_META;
+      buildSchemaScripts = entryModule.buildSchemaScripts;
     }
 
-    // Passa l'URL a React Router per capire quale pagina renderizzare
+    // ── Costruisce i meta tag per questa pagina ───────────────────────────────
+    const pageMeta = META[cleanPath] ?? DEFAULT_META;
+    const metaTagsHtml = buildMetaTags(pageMeta);
+    const schemaHtml = buildSchemaScripts(cleanPath);
+
+    // ── Renderizza React ──────────────────────────────────────────────────────
     const appHtml = await render(url);
 
-    // Inietta l'HTML di React nel template base
-    const html = template.replace('<!--app-html-->', appHtml);
+    // ── Sostituisce i placeholder nel template ────────────────────────────────
+    const html = template
+      .replace('<!--meta-tags-->', metaTagsHtml)
+      .replace('<!--schema-tags-->', schemaHtml)
+      .replace('<!--app-html-->', appHtml);
+
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+
   } catch (e) {
     vite?.ssrFixStacktrace(e);
     console.error(e);

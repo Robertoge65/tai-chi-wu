@@ -18,6 +18,7 @@ import ChiSiamo from "./pages/ChiSiamo";
 import Contatti from "./pages/Contatti";
 import ListaAttesa from "./pages/ListaAttesa";
 import NotFound from "./pages/NotFound";
+import BaDuanJin from "@/pages/BaDuanJin";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/chi-siamo" element={<ChiSiamo />} />
           <Route path="/contatti" element={<Contatti />} />
           <Route path="/lista-attesa" element={<ListaAttesa />} />
+          <Route path="/qi-gong/ba-duan-jin" element={<BaDuanJin />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
