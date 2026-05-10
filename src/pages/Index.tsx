@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Facebook, MapPin, Sparkles, Youtube } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import hero from "@/assets/hero-master.jpg";
+import hero from "@/assets/carretti-volo-blu.webp";
 import qigong from "@/assets/qigong.jpg";
 import students from "@/assets/students.jpg";
 
@@ -16,6 +16,7 @@ const Index = () => {
           <img
             src={hero}
             alt="Maestro di Tai Chi Chuan stile Wu in posizione fluida all'alba"
+            fetchpriority="high" // Dice al browser di scaricarla immediatamente
             width={1920}
             height={1080}
             className="h-full w-full object-cover object-left"
