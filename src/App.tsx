@@ -19,6 +19,10 @@ import Contatti from "./pages/Contatti";
 import ListaAttesa from "./pages/ListaAttesa";
 import NotFound from "./pages/NotFound";
 import BaDuanJin from "@/pages/BaDuanJin";
+import MedicinaTradizionaleCinese from "@/pages/MedicinaTradizionaleCinese";
+import QiEYinYang from "@/pages/QiEYinYang";
+import IMeridiani from "@/pages/IMeridiani";
+import LeCinqueBranche from "@/pages/LeCinqueBranche";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +48,10 @@ const App = () => (
           <Route path="/lista-attesa" element={<ListaAttesa />} />
           <Route path="/qi-gong/ba-duan-jin" element={<BaDuanJin />} />
           <Route path="*" element={<NotFound />} />
+	  <Route path="/medicina-tradizionale-cinese" element={<MedicinaTradizionaleCinese />} />
+	  <Route path="/medicina-tradizionale-cinese/qi-e-yin-yang" element={<QiEYinYang />} />
+    	  <Route path="/medicina-tradizionale-cinese/i-meridiani" element={<IMeridiani />} />
+          <Route path="/medicina-tradizionale-cinese/le-cinque-branche" element={<LeCinqueBranche />} />
         </Route>
       </Routes>
     </TooltipProvider>

@@ -1,89 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Home -->
   <url>
-    <loc>https://taichiwu.it/</loc>
+    <loc>https://www.taichiwu.it/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Tai Chi Chuan -->
   <url>
-    <loc>https://taichiwu.it/tai-chi</loc>
+    <loc>https://www.taichiwu.it/tai-chi</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
-    <loc>https://taichiwu.it/tai-chi/stile-wu</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.taichiwu.it/tai-chi/stile-wu</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://taichiwu.it/tai-chi/tai-chi-e-salute</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.taichiwu.it/tai-chi/tai-chi-e-salute</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Le Forme -->
   <url>
-    <loc>https://taichiwu.it/tai-chi/le-forme/forma-otto</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://www.taichiwu.it/tai-chi/le-forme/forma-otto</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://taichiwu.it/tai-chi/le-forme/forma-breve</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://www.taichiwu.it/tai-chi/le-forme/forma-breve</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://taichiwu.it/tai-chi/le-forme/forma-lunga</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://www.taichiwu.it/tai-chi/le-forme/forma-lunga</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://taichiwu.it/tai-chi/le-forme/forma-rapida</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://www.taichiwu.it/tai-chi/le-forme/forma-rapida</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Qi Gong -->
   <url>
-    <loc>https://taichiwu.it/qi-gong</loc>
+    <loc>https://www.taichiwu.it/qi-gong</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
-    <loc>https://taichiwu.it/qi-gong/ba-duan-jin</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Chi Siamo -->
-  <url>
-    <loc>https://taichiwu.it/chi-siamo</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Dove e Quando -->
-  <url>
-    <loc>https://taichiwu.it/dove-e-quando</loc>
+    <loc>https://www.taichiwu.it/qi-gong/ba-duan-jin</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Contatti -->
   <url>
-    <loc>https://taichiwu.it/contatti</loc>
+    <loc>https://www.taichiwu.it/medicina-tradizionale-cinese</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.taichiwu.it/medicina-tradizionale-cinese/qi-e-yin-yang</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.taichiwu.it/medicina-tradizionale-cinese/i-meridiani</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.taichiwu.it/medicina-tradizionale-cinese/le-cinque-branche</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.taichiwu.it/dove-e-quando</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.taichiwu.it/chi-siamo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.taichiwu.it/contatti</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.taichiwu.it/lista-attesa</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
-
 </urlset>
